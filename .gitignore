@@ -1,2 +1,5 @@
 Prospects/
-Prospects/
+.vscode/
+*~
+*.un~
+assets/Logos/
