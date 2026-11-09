@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft 365 Security Priorities — Placid Security</title>
+  <meta name="description" content="Ten priority Microsoft 365 and Entra ID security controls, drawn from the CIS benchmarks and ranked by impact. An executive summary from Placid Security.">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" type="image/png" href="assets/images/logo-icon-darkblue.png">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L8BX655W50"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L8BX655W50');
+</script>
+<style>
+.m365-intro { max-width: 760px; }
+.m365-list { list-style: none; counter-reset: ctl; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 1100px; }
+.m365-list li { counter-increment: ctl; position: relative; background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--teal); border-radius: var(--radius); padding: 20px 22px 20px 76px; }
+.m365-list li::before { content: counter(ctl); position: absolute; left: 20px; top: 16px; font-family: var(--font-display); font-weight: 800; font-size: 2.4rem; line-height: 1; color: var(--teal-dark); width: 40px; text-align: center; }
+.m365-list h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 6px; }
+.m365-list p { color: var(--text-muted); line-height: 1.6; }
+.m365-list li:nth-child(-n+3) { border-left-color: var(--navy); }
+@media (max-width: 768px) { .m365-list { grid-template-columns: 1fr; } }
+</style>
+</head>
+
+
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="assets/images/logo-horizontal-darkblue.png" alt="Placid Security">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="philosophy.html">Philosophy</a></li>
+        <li><a href="contact.html" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <h1>Microsoft 365 Security</h1>
+    <hr class="header-rule">
+  </header>
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">Executive Summary</div>
+      <h2 class="section-title">Ten Priorities for Microsoft 365 and Entra ID</h2>
+      <hr class="section-title-rule">
+      <div class="section-body m365-intro">
+        <p>Most Microsoft 365 break-ins start the same way: a stolen password, a malicious app approval, or a hijacked mailbox used to redirect payments. These ten controls close those doors.</p>
+        <p>I drew them from the Center for Internet Security (CIS) benchmarks for Microsoft 365, Azure and Entra ID, and ranked them by how much real-world compromise each one prevents. The first few deliver the most protection.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE TEN CONTROLS -->
+  <section class="section section--alt" id="controls">
+    <div class="section-inner">
+      <ol class="m365-list">
+        <li><h3>Require MFA for every user</h3><p>A password alone is not enough. Every sign-in also needs a second check, such as an approval in the Microsoft Authenticator app.</p></li>
+        <li><h3>Block legacy authentication</h3><p>Turn off older sign-in methods that cannot ask for that second check and give attackers a way around it.</p></li>
+        <li><h3>Lock down privileged accounts</h3><p>Keep administrators few, give them separate admin accounts, set up two emergency accounts, and grant admin rights only when needed.</p></li>
+        <li><h3>Phishing-resistant MFA for admins; retire weak methods</h3><p>Give administrators security keys or passkeys that phishing sites cannot capture, and retire text-message and phone-call codes.</p></li>
+        <li><h3>Control app registration and consent granting</h3><p>Only IT can approve apps that read company mail and files. Staff request apps instead of approving them on their own.</p></li>
+        <li><h3>Block automatic external mail forwarding</h3><p>Stop an intruder from quietly copying a mailbox's mail to an outside address.</p></li>
+        <li><h3>Turn on audit logging and keep a copy</h3><p>Record who did what, and keep a copy outside Microsoft 365 where an attacker cannot erase it.</p></li>
+        <li><h3>Email authentication and Defender for Office 365</h3><p>Stop others sending email that pretends to be from your domain, and check links and attachments before staff open them.</p></li>
+        <li><h3>Block device code flow; add risk-based access</h3><p>Close a sign-in trick used in current phishing campaigns, and challenge or block sign-ins that look suspicious.</p></li>
+        <li><h3>Modern password and lockout policy</h3><p>Ban easy-to-guess passwords, end forced password changes that lead to weaker ones, and slow down password guessing.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- WHERE TO START -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">Where to Start</div>
+      <h2 class="section-title">Items 1 to 3 Come First</h2>
+      <hr class="section-title-rule">
+      <div class="section-body">
+        <p>Together, the first three stop the large majority of account takeovers, and they can usually be done in days rather than weeks.</p>
+        <p>Most of this list works with Microsoft 365 Business Premium or E3. A few parts of items 3, 8 and 9 need E5 or an add-on license, and each can be phased in later.</p>
+        <p>I have a detailed companion guide that covers the rationale, how to check each control, and how to set it up. Ask me for a copy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <h2>Where does your tenant stand?</h2>
+    <p>I can check your Microsoft 365 and Entra ID configuration against these ten controls and the full CIS benchmark, and give you a clear, prioritized list of what to fix.</p>
+    <a href="contact.html" class="btn btn-primary">Schedule a Conversation</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-logo">
+          <img src="assets/images/logo-stacked-darkblue.png" alt="Placid Security">
+        </div>
+        <div class="footer-nav">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="philosophy.html">Philosophy</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><a href="mailto:info@placidsecurity.com">info@placidsecurity.com</a></p>
+          <p>Lake Placid, New York</p>
+          <p style="margin-top: 12px;"><a href="https://www.linkedin.com/in/kevin-geil" target="_blank" rel="noopener">LinkedIn &#8599;</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Placid Security. All rights reserved.</p>
+        <p class="footer-copy">Lake Placid, New York</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>
