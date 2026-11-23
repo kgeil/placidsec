@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /index.html.UnderConstruction
+
+Sitemap: https://placidsecurity.com/sitemap.xml

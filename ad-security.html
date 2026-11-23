@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active Directory Security Priorities — Placid Security</title>
+  <meta name="description" content="Ten priority Active Directory security controls for Windows Server 2019 domains, drawn from the CIS benchmarks and ranked by impact. An executive summary from Placid Security.">
+  <link rel="canonical" href="https://placidsecurity.com/ad-security.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Placid Security">
+  <meta property="og:title" content="Active Directory Security Priorities — Placid Security">
+  <meta property="og:description" content="Ten priority Active Directory security controls for Windows Server 2019 domains, drawn from the CIS benchmarks and ranked by impact. An executive summary from Placid Security.">
+  <meta property="og:url" content="https://placidsecurity.com/ad-security.html">
+  <meta property="og:image" content="https://placidsecurity.com/assets/images/logo-stacked-darkblue.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" type="image/png" href="assets/images/logo-icon-darkblue.png">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L8BX655W50"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L8BX655W50');
+</script>
+<style>
+.m365-intro { max-width: 760px; }
+.m365-list { list-style: none; counter-reset: ctl; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 1100px; }
+.m365-list li { counter-increment: ctl; position: relative; background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--teal); border-radius: var(--radius); padding: 20px 22px 20px 76px; }
+.m365-list li::before { content: counter(ctl); position: absolute; left: 20px; top: 16px; font-family: var(--font-display); font-weight: 800; font-size: 2.4rem; line-height: 1; color: var(--teal-dark); width: 40px; text-align: center; }
+.m365-list h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 6px; }
+.m365-list p { color: var(--text-muted); line-height: 1.6; }
+.m365-list li:nth-child(-n+3) { border-left-color: var(--navy); }
+@media (max-width: 768px) { .m365-list { grid-template-columns: 1fr; } }
+</style>
+</head>
+
+
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="assets/images/logo-horizontal-darkblue.png" alt="Placid Security">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="philosophy.html">Philosophy</a></li>
+        <li><a href="contact.html" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <h1>Active Directory Security</h1>
+    <hr class="header-rule">
+  </header>
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">Executive Summary</div>
+      <h2 class="section-title">Ten Priorities for Active Directory</h2>
+      <hr class="section-title-rule">
+      <div class="section-body m365-intro">
+        <p>Most Active Directory takeovers follow the same path: capture or relay a password on the internal network, reuse it to move from machine to machine, and climb to Domain Admin. These ten controls break that chain.</p>
+        <p>I drew them from the Center for Internet Security (CIS) benchmarks for Windows Server 2019, 2022 and 2025, and ranked them by how much real-world compromise each one prevents. They are written for the domains I see most often, with Windows Server 2019 domain controllers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE TEN CONTROLS -->
+  <section class="section section--alt" id="controls">
+    <div class="section-inner">
+      <ol class="m365-list">
+        <li><h3>Separate and restrict privileged accounts</h3><p>Keep Domain Admins to a handful of people, give them separate admin accounts, and let those accounts sign in only to domain controllers and dedicated admin machines.</p></li>
+        <li><h3>Deploy Windows LAPS and block local admin reuse</h3><p>Give every computer its own random local administrator password, rotated automatically, so one stolen password does not unlock the whole network.</p></li>
+        <li><h3>Remove broadcast name resolution</h3><p>Turn off LLMNR, NetBIOS name service, mDNS and WPAD. Attackers on the network use them to trick computers into handing over passwords.</p></li>
+        <li><h3>Require SMB signing; remove SMBv1</h3><p>Make file-sharing connections prove they are genuine, which stops stolen logins being replayed to other servers, and remove the obsolete SMBv1 protocol.</p></li>
+        <li><h3>Require LDAP signing and channel binding</h3><p>Stop attackers relaying stolen logins to the domain controllers to change Active Directory itself.</p></li>
+        <li><h3>Use managed service accounts; harden the rest</h3><p>Let Windows manage service account passwords automatically. Where that is not possible, use long random passwords and minimal rights.</p></li>
+        <li><h3>Strong password and lockout policy</h3><p>Require at least 14 characters, longer for admin and service accounts, and lock accounts after repeated failed guesses.</p></li>
+        <li><h3>Retire LM and NTLMv1; restrict NTLM</h3><p>Refuse old login methods whose passwords can be cracked in minutes, and track what still uses NTLM so it can be phased out.</p></li>
+        <li><h3>Harden the domain controllers</h3><p>Turn off services domain controllers do not need, such as printing, and protect the passwords held in their memory.</p></li>
+        <li><h3>Audit domain controllers and keep the logs</h3><p>Record who signed in, what changed and who was given admin rights, keep it off the server, and alert on high-risk events.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- WHERE TO START -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">Where to Start</div>
+      <h2 class="section-title">Items 1 to 3 Come First</h2>
+      <hr class="section-title-rule">
+      <div class="section-body">
+        <p>The first three close the paths attackers use most often inside a network, and items 2 and 3 are among the quickest wins available.</p>
+        <p>Everything on this list works with Windows Server 2019 and needs no extra licensing. Windows Server 2025 turns several of these protections on by default, so doing them now also smooths a future upgrade.</p>
+        <p>I have a detailed companion guide that covers the rationale, how to check each control, how to set it up, and what changed by default in Windows Server 2022 and 2025. Ask me for a copy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <h2>Where does your domain stand?</h2>
+    <p>I can check your Active Directory and domain controllers against these ten controls and the full CIS benchmark, and give you a clear, prioritized list of what to fix.</p>
+    <a href="contact.html" class="btn btn-primary">Schedule a Conversation</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-logo">
+          <img src="assets/images/logo-stacked-darkblue.png" alt="Placid Security">
+        </div>
+        <div class="footer-nav">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="philosophy.html">Philosophy</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><a href="mailto:info@placidsecurity.com">info@placidsecurity.com</a></p>
+          <p>Lake Placid, New York</p>
+          <p style="margin-top: 12px;"><a href="https://www.linkedin.com/in/kevin-geil" target="_blank" rel="noopener">LinkedIn &#8599;</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Placid Security. All rights reserved.</p>
+        <p class="footer-copy">Lake Placid, New York</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

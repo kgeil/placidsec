@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Microsoft 365 Security Priorities — Placid Security</title>
   <meta name="description" content="Ten priority Microsoft 365 and Entra ID security controls, drawn from the CIS benchmarks and ranked by impact. An executive summary from Placid Security.">
+  <link rel="canonical" href="https://placidsecurity.com/m365-security.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Placid Security">
+  <meta property="og:title" content="Microsoft 365 Security Priorities — Placid Security">
+  <meta property="og:description" content="Ten priority Microsoft 365 and Entra ID security controls, drawn from the CIS benchmarks and ranked by impact. An executive summary from Placid Security.">
+  <meta property="og:url" content="https://placidsecurity.com/m365-security.html">
+  <meta property="og:image" content="https://placidsecurity.com/assets/images/logo-stacked-darkblue.png">
+  <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="icon" type="image/png" href="assets/images/logo-icon-darkblue.png">
   <!-- Google tag (gtag.js) -->
@@ -73,13 +81,13 @@
   <section class="section section--alt" id="controls">
     <div class="section-inner">
       <ol class="m365-list">
-        <li><h3>Require MFA for every user</h3><p>A password alone is not enough. Every sign-in also needs a second check, such as an approval in the Microsoft Authenticator app.</p></li>
+        <li><h3>Require MFA for every user, phishing-resistant preferred</h3><p>A password alone is not enough. Every sign-in also needs a second check, such as an approval in the Microsoft Authenticator app. Phishing-resistant MFA is becoming popular and is available to most users, with passkeys being the most common option.</p></li>
         <li><h3>Block legacy authentication</h3><p>Turn off older sign-in methods that cannot ask for that second check and give attackers a way around it.</p></li>
-        <li><h3>Lock down privileged accounts</h3><p>Keep administrators few, give them separate admin accounts, set up two emergency accounts, and grant admin rights only when needed.</p></li>
+        <li><h3>Lock down privileged accounts</h3><p>Limit the number of administrators, give them separate admin accounts, set up two emergency accounts, and grant admin rights only when needed.</p></li>
         <li><h3>Phishing-resistant MFA for admins; retire weak methods</h3><p>Give administrators security keys or passkeys that phishing sites cannot capture, and retire text-message and phone-call codes.</p></li>
         <li><h3>Control app registration and consent granting</h3><p>Only IT can approve apps that read company mail and files. Staff request apps instead of approving them on their own.</p></li>
         <li><h3>Block automatic external mail forwarding</h3><p>Stop an intruder from quietly copying a mailbox's mail to an outside address.</p></li>
-        <li><h3>Turn on audit logging and keep a copy</h3><p>Record who did what, and keep a copy outside Microsoft 365 where an attacker cannot erase it.</p></li>
+        <li><h3>Turn on audit logging and keep a copy</h3><p>Record who did what, and keep a copy outside Microsoft 365 where an attacker cannot erase it. Ideally, alert on high-risk activities like creation of mail-forwarding rules.</p></li>
         <li><h3>Email authentication and Defender for Office 365</h3><p>Stop others sending email that pretends to be from your domain, and check links and attachments before staff open them.</p></li>
         <li><h3>Block device code flow; add risk-based access</h3><p>Close a sign-in trick used in current phishing campaigns, and challenge or block sign-ins that look suspicious.</p></li>
         <li><h3>Modern password and lockout policy</h3><p>Ban easy-to-guess passwords, end forced password changes that lead to weaker ones, and slow down password guessing.</p></li>
